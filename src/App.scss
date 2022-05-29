@@ -1,7 +1,7 @@
-@use "styles/variables" as v;
+@use "styles/variables" as *;
 
 .container {
-  max-width: v.$laptop-width;
+  max-width: map-get($breakpoints, 'laptop');
   margin: 0 auto;
-  padding: v.$spacing-unit * 2 v.$spacing-unit;
+  padding: $spacing-unit * 2 $spacing-unit;
 }
