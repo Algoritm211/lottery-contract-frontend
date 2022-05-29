@@ -1,14 +1,20 @@
-import React from 'react';
-import './App.css';
+import React, {useContext} from 'react';
+import './App.scss';
 import {web3} from "./web3";
+import {LotteryContext} from "./context/LotteryContext";
 
 
 const App: React.FC = () => {
-  web3.eth.getAccounts().then(console.log);
+  const {manager} = useContext(LotteryContext);
   return (
-    <div className="App">
+    <div className="container">
+      <h1>
+        Lottery manager
+      </h1>
+      <p>
+        This contract is managed by {manager}
+      </p>
       <header className="App-header">
-        Some text
       </header>
     </div>
   )

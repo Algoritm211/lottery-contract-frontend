@@ -1,0 +1,7 @@
+@use "styles/variables" as v;
+
+.container {
+  max-width: v.$laptop-width;
+  margin: 0 auto;
+  padding: v.$spacing-unit * 2 v.$spacing-unit;
+}
