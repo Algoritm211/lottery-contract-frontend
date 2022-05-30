@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+
+
+.entry__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    width: $spacing-unit * 30;
+    padding: $spacing-unit;
+    border-radius: $spacing-unit;
+
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .submit__button {
+    margin: $spacing-unit;
+    padding: $spacing-unit * 2 $spacing-unit * 4;
+    border-radius: $spacing-unit;
+    border: none;
+    cursor: pointer;
+    font-weight: $font-bold;
+    color: white;
+    background-color: #a099ff;
+    background-image:
+      radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%),
+      radial-gradient(at 50% 100%, hsla(225,39%,25%,1) 0, transparent 50%);
+    transition: all 0.5s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  .form_error {
+    margin: $spacing-unit;
+  }
+}

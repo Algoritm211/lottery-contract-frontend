@@ -4,4 +4,5 @@
   max-width: map-get($breakpoints, 'laptop');
   margin: 0 auto;
   padding: $spacing-unit * 2 $spacing-unit;
+  min-height: 100vh;
 }

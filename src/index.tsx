@@ -2,17 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './normalize.css';
 import './styles/_variables.scss';
+import './styles/_base.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {LotteryContextProvider} from "./context/LotteryContext";
+import {UserInfoProvider} from "./context/UserWalletInfoContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <LotteryContextProvider>
-    <App />
-  </LotteryContextProvider>
+  <UserInfoProvider>
+    <LotteryContextProvider>
+      <App />
+    </LotteryContextProvider>
+  </UserInfoProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
