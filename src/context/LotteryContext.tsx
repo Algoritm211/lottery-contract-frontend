@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {lottery} from "../contractInfo/lottery";
 import {web3} from "../web3";
+import pickWinner from "../components/PickWinner/PickWinner";
 
 
 interface LotteryContextValues {
   manager: string;
   players: string[];
   balance: number;
+  enterLottery: (wallet: string, amount: number) => Promise<void>;
+  pickWinner: (wallet: string) => Promise<void>
 }
 
 export const LotteryContext = React.createContext({} as LotteryContextValues)
@@ -37,6 +40,32 @@ export const LotteryContextProvider: React.FC<Props> = ({children}) => {
     }
   }
 
+  const enterLottery = async (wallet: string, amount: number) => {
+    try {
+      await lottery.methods.enter().send({
+        from: wallet,
+        value: web3.utils.toWei(amount.toString(), 'ether'),
+      })
+      await getPlayers();
+      await getCurrentBalance();
+    } catch (error) {
+      console.log('Some error was occurred while entering the lottery')
+    }
+  }
+
+  const pickWinner = async (wallet: string) => {
+    try {
+      await lottery.methods.pickWinner().send({
+        from: wallet
+      });
+      await getPlayers();
+      await getCurrentBalance();
+    } catch (error) {
+      console.log(error);
+      console.log('Something went wrong with picking winner')
+    }
+  }
+
   const getCurrentBalance = async () => {
     try {
       const currentBalance = Number(await web3.eth.getBalance(lottery.options.address));
@@ -56,7 +85,9 @@ export const LotteryContextProvider: React.FC<Props> = ({children}) => {
     <LotteryContext.Provider value={{
       manager,
       players,
-      balance: contractBalance
+      balance: contractBalance,
+      enterLottery,
+      pickWinner,
     }}>
       {children}
     </LotteryContext.Provider>

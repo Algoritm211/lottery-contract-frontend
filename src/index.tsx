@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './normalize.css';
-import './styles/_variables.scss';
-import './styles/_base.scss';
+import './styles/_index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {LotteryContextProvider} from "./context/LotteryContext";
