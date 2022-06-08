@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {lottery} from "../contractInfo/lottery";
 import {web3} from "../web3";
-import pickWinner from "../components/PickWinner/PickWinner";
 
 
 interface LotteryContextValues {
